@@ -6,9 +6,7 @@ on:
   schedule:
     - cron:  '0 23 * * *'
   push:
-    tags:
-      - nightly_*
-      - R20*
+    branches: [ "main" ]
 
 defaults:
   run:
