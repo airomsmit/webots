@@ -20,16 +20,14 @@ jobs:
         os: [self-hosted]
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Checkout submodules
-      run: |
-        git submodule update --init --recursive
     - uses: msys2/setup-msys2@v2
       with:
         update: false
     - uses: actions/checkout@v3
       with:
-         submodules: true
-         fetch-depth: 15
+        submodules: recursive
+          run: |
+          git submodule update --init --recursive     
     - name: Install Webots Compilation Dependencies
       run: |
         echo 'export PATH=$GITHUB_WORKSPACE/msys64/mingw64/bin:$GITHUB_WORKSPACE/bin/node:/mingw64/bin:/usr/bin:$PATH' >> ~/.bash_profile
