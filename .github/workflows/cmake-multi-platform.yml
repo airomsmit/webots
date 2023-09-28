@@ -77,7 +77,7 @@ jobs:
     - name: Webots Package Creation
       run: |
         export WEBOTS_HOME=$GITHUB_WORKSPACE
-        make distrib
+        make distrib -j8
     - name: Create/Update GitHub release
       if: ${{ (github.event_name == 'push' || github.event_name == 'schedule') }}
       run: |
